@@ -1,5 +1,10 @@
 # Placeholder Image
  
+[![Latest Stable Version](https://poser.pugx.org/kreyu/placeholder-image/version)](https://packagist.org/packages/kreyu/placeholder-image)
+[![Latest Unstable Version](https://poser.pugx.org/kreyu/placeholder-image/v/unstable)](//packagist.org/packages/kreyu/placeholder-image)
+[![Total Downloads](https://poser.pugx.org/kreyu/placeholder-image/downloads)](https://packagist.org/packages/kreyu/placeholder-image)
+[![Build Status](https://travis-ci.org/Kreyu/placeholder-image.svg?branch=master)](https://travis-ci.org/Kreyu/placeholder-image)
+ 
 This package helps with usage of various placeholder image providers.  
 Zero dependencies, simple links. 
 
