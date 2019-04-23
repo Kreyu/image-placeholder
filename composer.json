@@ -1,0 +1,43 @@
+{
+    "name": "kreyu/placeholder-image",
+    "description": "Generate links for placeholder images using various providers",
+    "keywords": [
+        "kreyu",
+        "placeholder-image"
+    ],
+    "homepage": "https://github.com/kreyu/placeholder-image",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Sebastian Wróblewski",
+            "email": "kontakt@swroblewski.pl",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "ext-http": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kreyu\\PlaceholderImage\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kreyu\\PlaceholderImage\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
