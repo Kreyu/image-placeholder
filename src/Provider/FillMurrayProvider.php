@@ -21,9 +21,9 @@ class FillMurrayProvider extends AbstractProvider
     /**
      * {@inheritDoc}
      */
-    protected function buildUrl($width, $height, ProviderOptions $options)
+    protected function buildUrl($width, $height, ProviderOptions $options, bool $ssl)
     {
-        $url = $this->host;
+        $url = $this->getBaseUrl($ssl);
 
         if ($options->getGrayscale()) {
             $url .= '/g';

@@ -258,7 +258,7 @@ class ProviderOptionsTest extends TestCase
                 }
             }
 
-            protected function buildUrl($width, $height, ProviderOptions $options) {
+            protected function buildUrl($width, $height, ProviderOptions $options, bool $ssl) {
                 return '';
             }
         };

@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class PlaceholderProviderTest extends TestCase
 {
-    public function testGenerate()
+    public function testGeneratingUrl()
     {
         $provider = new PlaceholderProvider;
 
@@ -18,6 +18,20 @@ class PlaceholderProviderTest extends TestCase
             'text' => 'Beep boop',
         ]);
 
-        $this->assertEquals('via.placeholder.com/500x250.png/FF0000/0000FF/?text=Beep+boop', $url);
+        $this->assertEquals('https://via.placeholder.com/500x250.png/FF0000/0000FF/?text=Beep+boop', $url);
+    }
+
+    public function testGeneratingUrlWithoutSsl()
+    {
+        $provider = new PlaceholderProvider;
+
+        $url = $provider->generate(500, 250, [
+            'extension' => 'png',
+            'background' => 'FF0000',
+            'foreground' => '0000FF',
+            'text' => 'Beep boop',
+        ], false);
+
+        $this->assertEquals('http://via.placeholder.com/500x250.png/FF0000/0000FF/?text=Beep+boop', $url);
     }
 }

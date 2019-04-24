@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class PlaceImgProviderTest extends TestCase
 {
-    public function testGenerate()
+    public function testGeneratingUrl()
     {
         $provider = new PlaceImgProvider;
 
@@ -15,6 +15,17 @@ class PlaceImgProviderTest extends TestCase
             'category' => 'architecture',
         ]);
 
-        $this->assertEquals('placeimg.com/500/250/architecture', $url);
+        $this->assertEquals('https://placeimg.com/500/250/architecture', $url);
+    }
+
+    public function testGeneratingUrlWithoutSsl()
+    {
+        $provider = new PlaceImgProvider;
+
+        $url = $provider->generate(500, 250, [
+            'category' => 'architecture',
+        ], false);
+
+        $this->assertEquals('http://placeimg.com/500/250/architecture', $url);
     }
 }

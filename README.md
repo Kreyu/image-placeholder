@@ -1,8 +1,6 @@
 # Placeholder Image
  
 [![Latest Stable Version](https://poser.pugx.org/kreyu/placeholder-image/version)](https://packagist.org/packages/kreyu/placeholder-image)
-[![Latest Unstable Version](https://poser.pugx.org/kreyu/placeholder-image/v/unstable)](//packagist.org/packages/kreyu/placeholder-image)
-[![Total Downloads](https://poser.pugx.org/kreyu/placeholder-image/downloads)](https://packagist.org/packages/kreyu/placeholder-image)
 [![Build Status](https://travis-ci.org/Kreyu/placeholder-image.svg?branch=master)](https://travis-ci.org/Kreyu/placeholder-image)
  
 This package helps with usage of various placeholder image providers.  
@@ -27,7 +25,7 @@ composer test
 To generate the url placeholder image: 
 
 ```php
-PlaceholderImage::with($providerAlias)->generate($width, $height, array $options); 
+PlaceholderImage::with($providerAlias)->generate($width, $height, array $options, $ssl = true); 
 ```
 
 Example usage:
@@ -44,15 +42,10 @@ PlaceholderImage::with('dummy_image')->generate(600, 400, [
 Will give us the following url:
 
 ```
-dummyimage.com/600x400/FF9900/FFFFFF.png&text=Beep+boop
+https://dummyimage.com/600x400/FF9900/FFFFFF.png&text=Beep+boop
 ```
 
-Using the invalid provider alias throws the `InvalidProviderException`
-
-```
-Fatal error: Uncaught Kreyu\PlaceholderImage\Exception\InvalidProviderException: 
-Requested provider invalid-prov does not exist.
-```
+Fourth argument allows to disable SSL support.
 
 ## Supported providers
 
@@ -60,6 +53,13 @@ Requested provider invalid-prov does not exist.
 - `dummy_image` - [dummyimage.com](https://dummyimage.com)
 - `placeholder` - [placeholder.com](https://placeholder.com)
 - `place_img` - [placeimg.com](https://placeimg.com)
+
+Using the invalid provider alias throws the `InvalidProviderException`
+
+```
+Fatal error: Uncaught Kreyu\PlaceholderImage\Exception\InvalidProviderException: 
+Requested provider invalid-prov does not exist.
+```
 
 ## License
 

@@ -152,9 +152,9 @@ abstract class AbstractProvider implements ProviderInterface
     /**
      * {@inheritDoc}
      */
-    public function generate($width, $height, array $options = [])
+    public function generate($width, $height, array $options = [], bool $ssl = true)
     {
-        return $this->buildUrl($width, $height, new ProviderOptions($this, $options));
+        return $this->buildUrl($width, $height, new ProviderOptions($this, $options), $ssl);
     }
 
     /**
@@ -163,7 +163,30 @@ abstract class AbstractProvider implements ProviderInterface
      * @param  int|string $width
      * @param  int|string|null $height
      * @param  ProviderOptions $options
+     * @param  bool $ssl
      * @return string
      */
-    protected abstract function buildUrl($width, $height, ProviderOptions $options);
+    protected abstract function buildUrl($width, $height, ProviderOptions $options, bool $ssl);
+
+    /**
+     * Retrieve a protocol string.
+     *
+     * @param  bool $ssl
+     * @return string
+     */
+    protected function getProtocol(bool $ssl)
+    {
+        return $ssl ? 'https' : 'http';
+    }
+
+    /**
+     * Get a base url, which consists of protocol and host.
+     *
+     * @param  bool $ssl
+     * @return string
+     */
+    protected function getBaseUrl(bool $ssl)
+    {
+        return $this->getProtocol($ssl) . '://' . $this->host;
+    }
 }

@@ -44,9 +44,9 @@ class PlaceholderProvider extends AbstractProvider
     /**
      * {@inheritDoc}
      */
-    protected function buildUrl($width, $height, ProviderOptions $options)
+    protected function buildUrl($width, $height, ProviderOptions $options, bool $ssl)
     {
-        $url = $this->host . '/' . $width;
+        $url = $this->getBaseUrl($ssl) . '/' . $width;
 
         if ($height) {
             $url .= 'x' . $height;

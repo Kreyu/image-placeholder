@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class DummyImageProviderTest extends TestCase
 {
-    public function testGenerate()
+    public function testGeneratingUrl()
     {
         $provider = new DummyImageProvider;
 
@@ -18,6 +18,20 @@ class DummyImageProviderTest extends TestCase
             'text' => 'Beep boop',
         ]);
 
-        $this->assertEquals('dummyimage.com/500x250.png/FF0000/0000FF&text=Beep+boop', $url);
+        $this->assertEquals('https://dummyimage.com/500x250.png/FF0000/0000FF&text=Beep+boop', $url);
+    }
+
+    public function testGeneratingUrlWithoutSsl()
+    {
+        $provider = new DummyImageProvider;
+
+        $url = $provider->generate(500, 250, [
+            'extension' => 'png',
+            'background' => 'FF0000',
+            'foreground' => '0000FF',
+            'text' => 'Beep boop',
+        ], false);
+
+        $this->assertEquals('http://dummyimage.com/500x250.png/FF0000/0000FF&text=Beep+boop', $url);
     }
 }
